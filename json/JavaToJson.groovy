@@ -1,4 +1,5 @@
 /** this script converts java object to json object, uses jackson libraries
+* * http://mvnrepository.com/artifact/com.fasterxml.jackson.core
 * also shows customed json element using JsonProperty
 */
 import com.fasterxml.jackson.annotation.JsonProperty
