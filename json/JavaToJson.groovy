@@ -1,17 +1,18 @@
 /** this script converts java object to json object, uses jackson libraries
 * also shows customed json element using JsonProperty
 */
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.databind.ObjectMapper
 class Synchronize {
-
-    String method = null
-    String path = null
-    @com.fasterxml.jackson.annotation.JsonProperty("synchronization-type")
+    String method
+    String path
+    @JsonProperty("synchronization-type")
     int synchronizationType
 }
 
 def synch = new Synchronize()
-synch.method = "GET"
-synch.path = "news"
+synch.method = 'GET'
+synch.path = 'news'
 synch.synchronizationType = 2
-com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper()
+ObjectMapper mapper = new ObjectMapper()
 println(mapper.writeValueAsString(synch))
