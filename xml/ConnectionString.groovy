@@ -3,10 +3,11 @@
 * allows to retrieve the connection with specified values and
 * create connection string as well
 * https://community.smartbear.com/t5/SoapUI-NG/Parsing-XML-file-with-Groovy-script/m-p/127139#M29312
+* NOTE: If using in soapui, replace "println" with "log.info"
 **/
 
-def env = ['test', 'sandbox']
-def connName = 'wba'
+def envs = ['test', 'sandbox']
+def connNames = ['wba', 'vb', 'cnx', 'rb', 'subinfo']
 def xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <connStrings>
    <env name="test">
@@ -79,15 +80,16 @@ def xml = '''<?xml version="1.0" encoding="UTF-8"?>
    </env>
 </connStrings>'''
 def connStrings = new XmlSlurper().parseText(xml)
-//Get details of test environment
-def testConnetionDetails = getConnectionDetails(connStrings, env[0], connName)
-showConnectionDetails(testConnetionDetails, env[0], connName)
-getConnectionString(testConnetionDetails)
+
 //Get details of sandbox environment
-def sandboxConnetionDetails = getConnectionDetails(connStrings, env[1], connName)
-showConnectionDetails(sandboxConnetionDetails, env[1], connName)
-def connStr = getConnectionString(sandboxConnectionDetails)
-println "Connection String is : ${connStr}"
+for (String env: envs) {
+   for(String connName: connNames) {
+      def connetionDetails = getConnectionDetails(connStrings, env, connName)
+      showConnectionDetails(connetionDetails, env, connName)
+      def connStr = getConnectionString(connectionDetails)
+      println "Connection String is : ${connStr}"
+   }
+}
 
 def getConnectionDetails(def connectionStrings, String environmentName, String connectionName) {
    def envronment = connectionStrings.'**'.find{it.@name == environmentName}
