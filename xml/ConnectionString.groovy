@@ -85,15 +85,17 @@ def connStrings = new XmlSlurper().parseText(xml)
 for (String env: envs) {
    for(String connName: connNames) {
       def connetionDetails = getConnectionDetails(connStrings, env, connName)
-      showConnectionDetails(connetionDetails, env, connName)
-      def connStr = getConnectionString(connectionDetails)
-      println "Connection String is : ${connStr}"
+      if (connetionDetails) {
+         showConnectionDetails(connetionDetails, env, connName)
+         def connStr = getConnectionString(connectionDetails)
+         println "Connection String is : ${connStr}"
+      }
    }
 }
 
 def getConnectionDetails(def connectionStrings, String environmentName, String connectionName) {
    def envronment = connectionStrings.'**'.find{it.@name == environmentName}
-   envronment.'**'.find{ it.name() == 'connName' && it == connectionName}.parent()
+   envronment.'**'.find{ it.name() == 'connName' && it == connectionName}?.parent()
 }
 
 def showConnectionDetails(def connexionDetails, String environmentName, String connectionName){
