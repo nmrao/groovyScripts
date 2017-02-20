@@ -13,7 +13,7 @@ def students = """<Students>
     <name> st name 7</name>
     <name> st name 8</name>
     <name> st name 9</name>
-  <name> st name 10</name>
+	<name> st name 10</name>
     <name> st name 11</name>
     <name> st name 12</name>
     <name> st name 13</name>
@@ -23,7 +23,7 @@ def students = """<Students>
     <name> st name 17</name>
     <name> st name 18</name>
     <name> st name 19</name>
-  <name> st name 20</name>
+	<name> st name 20</name>
     <name> st name 21</name>
     <name> st name 22</name>
     <name> st name 23</name>
@@ -33,8 +33,8 @@ def students = """<Students>
     <name> st name 27</name>
     <name> st name 28</name>
     <name> st name 29</name>
-  <name> st name 30</name>
-  <name> st name 31</name>
+	<name> st name 30</name>
+	<name> st name 31</name>
     <name> st name 32</name>
     <name> st name 33</name>
     <name> st name 34</name>
@@ -43,8 +43,8 @@ def students = """<Students>
     <name> st name 37</name>
     <name> st name 38</name>
     <name> st name 39</name>
-  <name> st name 40</name>
-  <name> st name 41</name>
+	<name> st name 40</name>
+	<name> st name 41</name>
     <name> st name 42</name>
     <name> st name 43</name>
     <name> st name 44</name>
@@ -53,7 +53,7 @@ def students = """<Students>
     <name> st name 47</name>
     <name> st name 48</name>
     <name> st name 49</name>
-<name> st name 50</name>
+	<name> st name 50</name>
 </Students>"""
 
 def teachers = """<Teachers>
