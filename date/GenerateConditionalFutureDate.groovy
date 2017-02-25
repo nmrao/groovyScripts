@@ -25,7 +25,7 @@ def getOffSetDays = { date ->
     //Need to change the date range if needed.
     //As per OP, May to August is mentioned below
     def max = getDifferenceDays(date) { "${it[Calendar.YEAR]}-08-31" }
-    def min = getDifferenceDays(date) { "${it[Calendar.YEAR]}-04-30" }
+    def min = getDifferenceDays(date) { "${it[Calendar.YEAR]}-05-01" }
     getNumberInRange(min, max)
 }
 
@@ -52,7 +52,7 @@ def offset = getOffSetDays(selected)
 
 //Add the offset days to selected date
 use(TimeCategory) {
-    finalDate = selected + offset.days
+    finalDate = now + offset.days
 }
 println "Final future date is : $finalDate"
 println "Final future date is(formatted) : ${finalDate.format(dateFormat)}"
