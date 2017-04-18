@@ -50,11 +50,5 @@ def updateIgnoreElements = { data, fixedVal = 'REPLACED' ->
     ignoreNodes.each{ element ->   parsedData.'**'.findAll { it.name() == element}.each{it.replaceBody fixedVal} }
     groovy.xml.XmlUtil.serialize(parsedData) 
 }
-/*
-def pex = new XmlSlurper().parseText(expected)
-pex.'**'.findAll { it.name() == 'subscription'}.collect{it.@id = 'REPLACED'}
-ignoreNodes.each{ element ->   pex.'**'.findAll { it.name() == element}.each{it.replaceBody 'REPLACED'} }
-println groovy.xml.XmlUtil.serialize(pex)
-*/
 
 assert updateIgnoreElements(expected) == updateIgnoreElements(actual), 'Both are not matching'
