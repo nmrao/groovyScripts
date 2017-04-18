@@ -42,8 +42,12 @@ def actual = """<response>
     </selfcare>
   </payload>
 </response>"""
+
+//If required, add more ignore nodes or attributes(node: attribute format) in the below appropriately
 def ignoreNodes = ['purchase-date', 'expiry-date']
 def ignoreAttributes = ['subscription':'id']
+
+//Closure to update the xml with a fixed value REPLACED in place of dynamic value, so that comparison is done successfully
 def updateIgnoreElements = { data, fixedVal = 'REPLACED' ->
     def parsedData = new XmlSlurper().parseText(data)
     ignoreAttributes.each { k,v -> parsedData.'**'.findAll { it.name() == k}.collect{it.@"$v" = fixedVal} }
