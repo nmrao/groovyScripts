@@ -47,7 +47,7 @@ def ignoreAttributes = ['subscription':'id']
 def updateIgnoreElements = { data, fixedVal = 'REPLACED' ->
     def parsedData = new XmlSlurper().parseText(data)
     ignoreAttributes.each { k,v -> parsedData.'**'.findAll { it.name() == k}.collect{it.@"$v" = fixedVal} }
-    ignoreNodes.each{ element ->   parsedData.'**'.findAll { it.name() == element}.each{it.replaceBody fixedVal} }
+    ignoreNodes.each { element ->  parsedData.'**'.findAll { it.name() == element}.collect{it.replaceBody fixedVal} }
     groovy.xml.XmlUtil.serialize(parsedData) 
 }
 
