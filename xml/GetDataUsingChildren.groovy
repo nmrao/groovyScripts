@@ -1,5 +1,5 @@
 /**
-* Refer:
+* Refer:https://community.smartbear.com/t5/SoapUI-Open-Source/GroovyScript-Parse-SOAP-Response-and-get-node-names-and-node/m-p/143414#M24291
 *
 **/
 
