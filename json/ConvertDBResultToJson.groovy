@@ -30,9 +30,11 @@ def xml = """<Results>
 </Results>"""
 
 def parsed = new XmlSlurper().parseText(xml)
-def map = ['requestPayload' :  parsed.'**'.findAll{it.name() == 'Row'}.collect{element -> element.children().breadthFirst()*.name()
-             .findAll { !element."$it".children().size() }
-		   .collectEntries{[(element."$it".name()): element."$it".text()] }
-}]
+def map = ['requestPayload' :  parsed.'**'.findAll{it.name() == 'Row'}
+	   	.collect { element -> element.children().breadthFirst()*.name()
+             		.findAll { !element."$it".children().size() }
+	     		.collectEntries { [(element."$it".name()): element."$it".text()] }
+	   	}
+	  ]
 
 println new groovy.json.JsonBuilder(map).toPrettyString()
