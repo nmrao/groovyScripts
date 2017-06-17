@@ -1,5 +1,5 @@
 /**
-* Refer:
+* Refer: https://stackoverflow.com/questions/41389510/how-to-assert-that-a-node-value-is-associated-with-another-node-value/41390196#41390196
 *
 **/
 
