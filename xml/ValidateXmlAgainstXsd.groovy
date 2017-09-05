@@ -36,12 +36,12 @@ def isValid(String xsd, String xml) {
             println "$xml is valid."
             result = true
         } catch (SAXException ex) {
-            println(xml + " is not valid because \n")
-            println(ex.localizedMessage)
+            println "$xml is not valid because \n"
+            println ex.localizedMessage 
         } catch (FileNotFoundException ex) {
-            println(ex.localizedMessage)
+            println ex.localizedMessage
         } catch (IOException ex) {
-            println(ex.localizedMessage)
+            println ex.localizedMessage
         } finally {
             return result
         }
