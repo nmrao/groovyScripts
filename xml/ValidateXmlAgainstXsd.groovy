@@ -32,7 +32,6 @@ def isValid(String xsd, String xml) {
         try {
             def schema = factory.newSchema(new File(xsd))
             def validator = schema.newValidator()
-            //validator.setErrorHandler(new UserErrorHandler())
             validator.validate(new StreamSource(new InputStreamReader(new FileInputStream(xml), StandardCharsets.UTF_8)))
             println "$xml is valid."
             result = true
